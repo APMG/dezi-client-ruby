@@ -71,20 +71,21 @@ class DeziResponse
         }
         
         if body['results'].nil?
+            @results = []
             return
         end
         
         # make each result Hash into a DeziDoc object
         @results = []
         body['results'].each {|r|
+        @results = body['results'].map {|r|
             result = r
             result['fields'] = {}
             @fields.each {|f|
                 result['fields'][f] = r.delete(f)
             }
-        
-            doc = DeziDoc.new(result)
-            @results.push(doc)
+
+            DeziDoc.new(result)
         }
         
     end
