@@ -70,7 +70,7 @@ class DeziResponse
             send("#{k}=",v)
         }
         
-        if body.['results'].nil?
+        if body['results'].nil?
             return
         end
         
