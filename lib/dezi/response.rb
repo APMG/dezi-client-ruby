@@ -76,8 +76,6 @@ class DeziResponse
         end
         
         # make each result Hash into a DeziDoc object
-        @results = []
-        body['results'].each {|r|
         @results = body['results'].map {|r|
             result = r
             result['fields'] = {}
